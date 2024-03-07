@@ -1,0 +1,35 @@
+<div ng-init="populate()" style="margin-bottom: 40px !important;">
+    <div class="panel">
+    	<h4 align=center>Verify Admin User Name</h4>
+        <hr>
+        	<table id="sendEmailFormTable">
+        		<div class="input-group" style="margin-bottom: 20px !important;">
+	        		<form method="post">
+			        	<tr>
+							<td>User Name</td>
+							<td>
+								<input matInput placeholder='John Smith' ng-model="adminUserName" class="form-control" ng-required="true"><mat-hint align=start><div class="footNoteTextStyleSmall"><font color=red>Add your user name as it is in Microsoft Entra ID</font></div></mat-hint>
+							</td>
+			        	</tr>
+			        	<tr>
+							<td>Email Address</td>
+							<td>
+								<input matInput placeholder='john.smith@myisp.com' ng-model="adminUserEmailAddress" class="form-control" ng-required="true"><mat-hint align=start><div class="footNoteTextStyleSmall"><font color=red>Add your user name as it is in Microsoft Entra ID</font></div></mat-hint>
+							</td>
+			        	</tr>
+			        	<tr>
+			        		<td>
+			        			<input type="submit" ng-click="add()" class="btn btn-primary" value="Submit">
+			        		</td>
+			        		<td>
+			        		</td>
+			        	</tr>
+			        </form>
+        		</div>
+        	</table>          
+    </div>
+    <div style="height: 70px !important;">
+	    <div class="alert alert-danger" data-ng-show="error && error !== ''"><strong>Failure!</strong>&nbsp;{{error}}</div>
+	    <div class="alert alert-success" data-ng-show="loadingMessage && loadingMessage !== ''"><strong>Success!</strong>&nbsp;{{loadingMessage}}</div>
+    </div>
+</div>

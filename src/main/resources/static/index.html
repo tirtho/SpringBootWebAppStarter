@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="theme-color" content="#000000" />
+    <title>Hello Application</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+	<!-- Add icon library -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="customStyles.css" />
+</head>
+<body ng-app="springBootWebAppStarter" ng-controller="homeCtrl" role="document">
+<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBarToggler" aria-controls="navBarToggler" aria-expanded="false" aria-label="Azure Spring Boot Sample">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navBarToggler">
+            <ul class="navbar-nav">
+                <li ng-class="{ active: isActive('/Home') }"><a class="nav-link" href="#/Home">Home</a></li>
+                <li ng-class="{ active: isActive('/Hello') }"><a class="nav-link" href="#/Hello">Hello</a></li>
+                <li ng-class="{ active: isActive('/Admin') }"><a class="nav-link" href="#/Admin">Admin</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container" role="main" style="margin-top: 80px !important;">
+    <div ng-view class="panel-body">
+</div>
+<hr>
+<div style="overflow-x:auto;">
+  <table id="footNoteTable">
+	<tr>
+		<td></td>
+		<td><div class="footNoteTextStyleLarge"><u>Contact</u></div></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><div class="footNoteTextStyleLarge">Tirthankar Barari (TR)</div></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><div class="footNoteTextStyleSmall">Principal Cloud Solution Architect</div></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><div class="footNoteTextStyleSmall">Financial Services and Insurance, Microsoft</div></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><div class="footNoteTextStyleSmall"><a href="mailto:Tirthankar.Barari@microsoft.com">Tirthankar.Barari@microsoft.com</a></div></td>
+	</tr>
+  </table>
+</div>
+</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+<script src="https://code.angularjs.org/1.2.25/angular-route.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<script src="Scripts/app.js"></script>
+<script src="Scripts/homeCtrl.js"></script>
+<script src="Scripts/helloCtrl.js"></script>
+<script src="Scripts/helloSvc.js"></script>
+<script src="Scripts/adminCtrl.js"></script>
+<script src="Scripts/adminSvc.js"></script>
+</html>
