@@ -9,10 +9,10 @@ angular.module('springBootWebAppStarter')
     .factory('adminSvc', ['$http', function ($http) {
         return {
             postItem: function (item) {
-                return $http.post('api/Admin/', item);
+                return $http.post('api/admin/', item);
             },
             getAdminUserProfile: function (id) {
-				return $http.get('api/Admin/' + id);
+				return $http.get('api/admin/' + id);
             },
             deleteItem: function (id) {
                 return $http({

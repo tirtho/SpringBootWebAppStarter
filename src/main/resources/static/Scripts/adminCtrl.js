@@ -17,8 +17,8 @@ angular.module('springBootWebAppStarter')
 
         $scope.add = function () {
 			adminSvc.postItem({
-				'username': $scope.helloUserName,
-				'preferredUserName': $scope.helloUserEmailAddress,
+				'userName': $scope.adminUserName,
+				'preferredUserName': $scope.adminUserEmailAddress,
 				'isAdmin': $scope.isAdmin,
 			}).success(function (results) {
 				$scope.populate();

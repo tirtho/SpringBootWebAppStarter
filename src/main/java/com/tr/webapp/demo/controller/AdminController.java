@@ -1,8 +1,12 @@
 package com.tr.webapp.demo.controller;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,39 +14,39 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tr.webapp.demo.model.UserProfile;
+import com.tr.webapp.demo.model.HelloItem;
 
 @RestController
 public class AdminController {
-	@RequestMapping(value = "/api/Admin/{id}", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
+	@RequestMapping(value = "/api/admin/{id}", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
 	@ResponseBody
-//	@PreAuthorize("hasAuthority('APPROLE_Admin')")
+	@PreAuthorize("hasAuthority('APPROLE_DocAIDemo-Admin')")
 	public ResponseEntity<?> getAdminUserProfile(
-//			OAuth2AuthenticationToken authToken,
+			OAuth2AuthenticationToken authToken,
 			@PathVariable String id
 		) {
-//		OAuth2User auth2User = authToken.getPrincipal();
-		String userName = "HELLO"; //auth2User.getName();
-		String preferredUserName = "HELLO@HELLO"; //auth2User.getAttribute("preferred_username");
-		return new ResponseEntity<>(new UserProfile(userName, preferredUserName, true), HttpStatus.OK);
+		OAuth2User auth2User = authToken.getPrincipal();
+		String userName = auth2User.getName();
+		String preferredUserName = auth2User.getAttribute("preferred_username");
+		return new ResponseEntity<>(new HelloItem(userName, preferredUserName, true), HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/api/Admin", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/api/admin/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-//	@PreAuthorize("hasAuthority('APPROLE_Admin')")
+	@PreAuthorize("hasAuthority('APPROLE_DocAIDemo-Admin')")
 	public ResponseEntity<?> verifyAdminUserProfile(
-//			OAuth2AuthenticationToken authToken,
-			@RequestBody UserProfile userProfile 
+			OAuth2AuthenticationToken authToken,
+			@RequestBody HelloItem userProfile 
 		) {
-//		OAuth2User auth2User = authToken.getPrincipal();
-		String userName = "HELLO"; //auth2User.getName();
-		String preferredUserName = "HELLO@HELLO"; //auth2User.getAttribute("preferred_username");
-		if (userName.compareTo(userProfile.getUserName()) == 0
-				&& preferredUserName.compareTo(userProfile.getPreferredUserName()) == 0
+		OAuth2User auth2User = authToken.getPrincipal();
+		String userName = auth2User.getName();
+		String preferredUserName = auth2User.getAttribute("preferred_username");
+		if (StringUtils.compare(userName, userProfile.getUserName()) == 0
+				&& StringUtils.compare(preferredUserName, userProfile.getPreferredUserName()) == 0
 				&& userProfile.getIsAdmin() == true) {
-			return new ResponseEntity<>("Name matched with logged in Admin user name", HttpStatus.OK);
+			return new ResponseEntity<>("Entered profile matched with logged in ADMIN user", HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>("Name didn't match with logged in Admin user name", HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity<>("Entered profile DID NOT match with logged in ADMIN user", HttpStatus.NOT_ACCEPTABLE);
 		}
 	}
 }

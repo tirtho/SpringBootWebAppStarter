@@ -10,16 +10,7 @@ angular.module('springBootWebAppStarter')
         return {
             postItem: function (item) {
                 return $http.post('api/hello/', item);
-            },
-            getHelloUserProfile: function (id) {
-				return $http.get('api/hello/' + id);
-            },
-            deleteItem: function (id) {
-                return $http({
-                    method: 'DELETE',
-                    url: 'api/deleteHelloUserProfile/' + id
-                });
-			}
+            }
         };
 	}
 	]

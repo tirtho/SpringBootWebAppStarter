@@ -11,15 +11,15 @@ angular.module('springBootWebAppStarter')
         $scope.loadingMessage = '';
         $scope.item = null;        
         
-        $scope.helloUserName = '';
-        $scope.helloUserEmailAddress = '';
-        $scope.isAdmin = false;
+        $scope.newHelloUserName = '';
+        $scope.newHelloUserEmailAddress = '';
+        $scope.newIsAdmin = false;
 
         $scope.add = function () {
 			helloSvc.postItem({
-				'username': $scope.helloUserName,
-				'preferredUserName': $scope.helloUserEmailAddress,
-				'isAdmin': $scope.isAdmin,
+				'userName': $scope.newHelloUserName,
+				'preferredUserName': $scope.newHelloUserEmailAddress,
+				'isAdmin': $scope.newIsAdmin,
 			}).success(function (results) {
 				$scope.populate();
 				$scope.loadingMessage = results;
@@ -31,8 +31,8 @@ angular.module('springBootWebAppStarter')
         
         $scope.populate = function () {
 	        $scope.error = '';
-	        $scope.helloUserName = '';
-	        $scope.helloUserEmailAddress = '';
+	        $scope.newHelloUserName = '';
+	        $scope.newHelloUserEmailAddress = '';
 	        $scope.loadingMessage = '';
 	        $scope.item = null;
         };

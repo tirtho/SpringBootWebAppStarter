@@ -2,13 +2,13 @@ package com.tr.webapp.demo.model;
 
 import java.util.Objects;
 
-public class UserProfile {
+public class HelloItem {
 
 	private String userName;
 	private String preferredUserName;
 	private Boolean isAdmin;
 	
-	public UserProfile() {
+	public HelloItem() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -18,7 +18,7 @@ public class UserProfile {
 	 * @param preferredUserName
 	 * @param isAdmin
 	 */
-	public UserProfile(String userName, String preferredUserName, Boolean isAdmin) {
+	public HelloItem(String userName, String preferredUserName, Boolean isAdmin) {
 		super();
 		this.userName = userName;
 		this.preferredUserName = preferredUserName;
@@ -54,7 +54,7 @@ public class UserProfile {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		UserProfile other = (UserProfile) obj;
+		HelloItem other = (HelloItem) obj;
 		return Objects.equals(isAdmin, other.isAdmin) && Objects.equals(preferredUserName, other.preferredUserName)
 				&& Objects.equals(userName, other.userName);
 	}
